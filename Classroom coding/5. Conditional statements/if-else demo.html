@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>If else demo</title>
+    <script>
+      function calc() {
+        let cost = Number(document.getElementById("cost").value);
+        let sell = Number(document.getElementById("sell").value);
+        let res = sell - cost;
+        if (cost == sell) {
+          document.getElementById("res").innerHTML =
+            "You got neither profit nor loss";
+        } else if (cost < sell) {
+          document.getElementById("res").innerHTML =
+            "Your profit : " + res + " Rupees";
+        } else {
+          document.getElementById("res").innerHTML =
+            "Your loss : " + res + " Rupees";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Profit and loss calculator</h1>
+    <form action="">
+      <input
+        type="text"
+        id="cost"
+        placeholder="Enter the cost of the product"
+      />
+      <input
+        type="text"
+        id="sell"
+        placeholder="Enter the selling price of the product"
+      />
+      <button type="button" onclick="calc()">Calculate</button>
+    </form>
+    <h2 id="res">Answer</h2>
+  </body>
+</html>
