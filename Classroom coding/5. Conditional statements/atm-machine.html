@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM Machine</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f4f4f4;
+        padding: 40px;
+      }
+
+      .box {
+        width: 350px;
+        background: white;
+        padding: 25px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .box input,
+      .box select,
+      .box button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-top: 12px;
+        font-size: 16px;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      #msg {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h2>ATM Machine</h2>
+
+      <select id="option" onchange="renderFields()">
+        <option value="">-- Select Operation --</option>
+        <option value="1">Deposit</option>
+        <option value="2">Withdraw</option>
+        <option value="3">Change PIN</option>
+        <option value="4">Check Balance</option>
+      </select>
+
+      <div id="inputs"></div>
+
+      <button onclick="proceed()">Proceed</button>
+
+      <p id="msg"></p>
+    </div>
+
+    <script>
+      let balance = 0;
+      let pin = "1234";
+
+      function renderFields() {
+        document.getElementById("msg").innerHTML = "";
+        let op = document.getElementById("option").value;
+        let inputArea = document.getElementById("inputs");
+        inputArea.innerHTML = "";
+
+        switch (op) {
+          case "1":
+            inputArea.innerHTML = `
+                    <input type="number" id="amount" placeholder="Enter amount to deposit">
+                    <input type="password" id="pin1" maxlength="4" placeholder="Enter PIN" oninput="digitOnly(this)">
+                `;
+            break;
+
+          case "2":
+            inputArea.innerHTML = `
+                    <input type="number" id="amount" placeholder="Enter amount to withdraw">
+                    <input type="password" id="pin1" maxlength="4" placeholder="Enter PIN" oninput="digitOnly(this)">
+                `;
+            break;
+
+          case "3":
+            inputArea.innerHTML = `
+                    <input type="password" id="oldpin" maxlength="4" placeholder="Enter Current PIN" oninput="digitOnly(this)">
+                    <input type="password" id="newpin" maxlength="4" placeholder="Enter New PIN" oninput="digitOnly(this)">
+                    <input type="password" id="confpin" maxlength="4" placeholder="Confirm New PIN" oninput="digitOnly(this)">
+                `;
+            break;
+
+          case "4":
+            inputArea.innerHTML = `
+                    <input type="password" id="pinCheck" maxlength="4" placeholder="Enter PIN" oninput="digitOnly(this)">
+                `;
+            break;
+        }
+      }
+
+      function digitOnly(x) {
+        x.value = x.value.replace(/[^0-9]/g, "");
+      }
+
+      function proceed() {
+        let op = document.getElementById("option").value;
+        let msg = document.getElementById("msg");
+        msg.innerHTML = "";
+
+        switch (op) {
+          // ------------------ DEPOSIT ------------------
+          case "1":
+            let dep = Number(document.getElementById("amount").value);
+            let p1 = document.getElementById("pin1").value;
+
+            if (p1 !== pin) {
+              msg.innerHTML = "Invalid PIN!";
+            } else if (dep < 100) {
+              msg.innerHTML = "Minimum deposit is ₹100";
+            } else {
+              balance += dep;
+              msg.innerHTML =
+                "Deposited Successfully! New Balance: ₹" + balance;
+            }
+
+            document.getElementById("amount").value = "";
+            document.getElementById("pin1").value = "";
+            break;
+
+          // ------------------ WITHDRAW ------------------
+          case "2":
+            let wd = Number(document.getElementById("amount").value);
+            let p2 = document.getElementById("pin1").value;
+
+            if (p2 !== pin) {
+              msg.innerHTML = "Invalid PIN!";
+            } else if (wd > balance) {
+              msg.innerHTML = "Insufficient Balance!";
+            } else if (wd > 10000) {
+              // ✔ UPDATED LIMIT
+              msg.innerHTML = "Maximum withdrawal limit is ₹10,000";
+            } else {
+              balance -= wd;
+              msg.innerHTML =
+                "Withdraw Successful! Remaining Balance: ₹" + balance;
+            }
+
+            document.getElementById("amount").value = "";
+            document.getElementById("pin1").value = "";
+            break;
+
+          // ------------------ CHANGE PIN ------------------
+          case "3":
+            let oldp = document.getElementById("oldpin").value;
+            let newp = document.getElementById("newpin").value;
+            let confp = document.getElementById("confpin").value;
+
+            if (oldp !== pin) {
+              msg.innerHTML = "Current PIN is wrong!";
+            } else if (newp !== confp) {
+              msg.innerHTML = "New PIN and Confirm PIN do not match!";
+            } else if (newp.length !== 4) {
+              msg.innerHTML = "PIN must be 4 digits";
+            } else {
+              pin = newp;
+              msg.innerHTML = "PIN Changed Successfully!";
+            }
+            break;
+
+          // ------------------ CHECK BALANCE ------------------
+          case "4":
+            let pcheck = document.getElementById("pinCheck").value;
+
+            if (pcheck !== pin) {
+              msg.innerHTML = "Invalid PIN!";
+            } else {
+              msg.innerHTML = "Your Balance is ₹" + balance;
+            }
+
+            // ✔ CLEAR PIN TEXTBOX ALWAYS
+            document.getElementById("pinCheck").value = "";
+            break;
+
+          default:
+            msg.innerHTML = "Please select a valid operation.";
+        }
+      }
+    </script>
+  </body>
+</html>
