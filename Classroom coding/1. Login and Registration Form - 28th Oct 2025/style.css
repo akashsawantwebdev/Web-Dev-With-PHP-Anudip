@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body, .container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+}
+
+.left, .right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.left h1 {
+  font-size: 60px;
+  line-height: 1.3;
+  opacity: 0;
+  animation: fadeIn 4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.right {
+  background-color: white;
+}
+
+.login-box {
+  width: 300px;
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-box form {
+  margin-top: 30px;
+}
+
+.login-box label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+button {
+  width: 48%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.divider span {
+  margin: 0 10px;
+  color: #777;
+}
+
+.register a {
+  color: blue;
+  text-decoration: none;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Registration Page */
+.register-left {
+  background-color: white;
+  color: black;
+  justify-content:center;
+  padding: 30px;
+}
+
+.register-right {
+  background-color: black;
+  color: white;
+  justify-content: center;
+  padding: 30px;
+}
+
+.register-form {
+  width: 80%;
+  max-width: 400px;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-form label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.register-form input,
+.register-form textarea,
+.register-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.register-right input,
+.register-right textarea,
+.register-right select {
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+}
+
+.gender label,
+.hobbies label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-group button {
+  width: 32%;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.register-right .btn-group button {
+  background-color: white;
+  color: black;
+}
+
+.btn-group button:nth-child(1):hover {
+  background-color: green;
+  color: white;
+}
+
+.btn-group button:nth-child(2):hover {
+  background-color: red;
+  color: white;
+}
+
+.btn-group button:nth-child(3):hover {
+  background-color: blue;
+  color: white;
+}
