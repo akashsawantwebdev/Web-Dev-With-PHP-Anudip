@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky's Restaurant</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .navbar {
+        background-color: #2b2f32;
+        padding: 15px 30px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      h2 {
+        margin-left: 60px;
+        margin-top: 40px;
+        font-size: 35px;
+      }
+
+      .menu-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 85%;
+        margin: auto;
+      }
+
+      .card {
+        background-color: white;
+        width: 40%;
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+
+      .card img {
+        width: 85%;
+        height: 370px;
+        border-radius: 5px;
+      }
+
+      .dish-name {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+
+      .desc {
+        font-size: 17px;
+        margin: 10px 0;
+      }
+
+      .price {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .video-section {
+        display: flex;
+        justify-content: center;
+      }
+
+      .video-section iframe {
+        width: 800px;
+        height: 430px;
+      }
+
+      footer {
+        background-color: #0e0908;
+        color: white;
+        text-align: center;
+        padding: 25px 0;
+        margin-top: 50px;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div>Sky's Restaurant</div>
+      <div>
+        <a href="#menu" style="color: white; margin-right: 20px">Menu</a>
+        <a href="#popular" style="color: white">Popular Dishes</a>
+      </div>
+    </div>
+
+    <h2 id="menu">Menu</h2>
+
+    <div class="menu-container">
+      <div class="card">
+        <img src="images/pizza.jpg" alt="Pizza" />
+        <div class="dish-name">Pizza Supreme</div>
+        <div class="desc">
+          Pizza sauce, mozzarella, bacon, onion, capsicum, pepperoni, mushrooms,
+          olives
+        </div>
+        <div class="price">Price: ₹250</div>
+      </div>
+
+      <div class="card">
+        <img src="images/paneer-tikka.jpg" alt="Paneer Tikka" />
+        <div class="dish-name">Paneer Tikka</div>
+        <div class="desc">
+          Paneer, yogurt, spices, bell peppers, onions, baby corn, mushrooms
+        </div>
+        <div class="price">Price: ₹200</div>
+      </div>
+    </div>
+
+    <h2 id="popular">Popular Dishes</h2>
+
+    <div class="video-section">
+      <iframe
+        src="https://www.youtube.com/embed/xdshDFwu9x4?autoplay=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <footer>
+      <p>&copy; 2025 Sky's Restaurant. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
