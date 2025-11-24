@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Information</title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>User Information</h1>
+
+      <div class="button-row">
+        <button id="showBtn">Display User Information</button>
+        <button id="clearBtn" class="clear">Clear</button>
+      </div>
+
+      <div id="user-container" class="box"></div>
+    </div>
+
+    <script>
+      const user = {
+        name: "Akash Sawant",
+        age: 25,
+        email: "akash@example.com",
+      };
+
+      const container = document.getElementById("user-container");
+
+      document.getElementById("showBtn").onclick = function () {
+        container.innerHTML = "";
+        container.style.display = "block";
+
+        const nameEl = document.createElement("p");
+        nameEl.innerHTML = `<span class="label">Name:</span> <span class="value">${user.name}</span>`;
+
+        const ageEl = document.createElement("p");
+        ageEl.innerHTML = `<span class="label">Age:</span> <span class="value">${user.age}</span>`;
+
+        const emailEl = document.createElement("p");
+        emailEl.innerHTML = `<span class="label">Email:</span> <span class="value">${user.email}</span>`;
+
+        container.appendChild(nameEl);
+        container.appendChild(ageEl);
+        container.appendChild(emailEl);
+      };
+
+      document.getElementById("clearBtn").onclick = function () {
+        container.innerHTML = "";
+        container.style.display = "none";
+      };
+    </script>
+  </body>
+</html>
